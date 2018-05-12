@@ -36,8 +36,7 @@ public class URLConnDemo
                 System.out.println("------------------------------------------------------------");
             }
 //            System.out.println(urlString);
-        }catch(IOException e)
-        {
+        }catch(IOException e) {
             e.printStackTrace();
         }
     }
