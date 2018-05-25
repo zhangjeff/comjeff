@@ -1,6 +1,5 @@
 package java8Test;
 
-import com.sun.tools.hat.internal.parser.ReadBuffer;
 
 import java.io.*;
 

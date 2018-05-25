@@ -1,6 +1,5 @@
 package thread;
 
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 
 /**
  * Created by zhangying on 2017/4/23.

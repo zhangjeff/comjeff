@@ -3,7 +3,6 @@ package java8Test;
 import java.io.File;
 import java.net.URL;
 
-import static com.apple.eio.FileManager.getResource;
 
 /**
  * Created by zhangying on 2018/3/19.

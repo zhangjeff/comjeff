@@ -1,6 +1,5 @@
 package testio;
 
-import com.sun.tools.hat.internal.parser.ReadBuffer;
 
 import java.io.BufferedReader;
 import java.io.File;
