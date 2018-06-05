@@ -35,7 +35,7 @@ public class Test {
 //            t2.setPriority(8);
 //            t1.start();
 //            t2.start();
-//        } catch (Exception e) {
+//        } catch (ExceptionTest e) {
 //            e.printStackTrace();
 //        }
 
