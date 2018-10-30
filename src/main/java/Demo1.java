@@ -24,7 +24,5 @@ public class Demo1 {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }
