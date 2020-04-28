@@ -1,14 +1,11 @@
 package jvm.newjvm;
-
 public class DeadLock {
-
     public static void main(String[] args) {
        new Thread(A::getA,"ThreadA").start();
 
        new Thread(B::getB,"ThreadB").start();
     }
 }
-
 
 class A {
 
