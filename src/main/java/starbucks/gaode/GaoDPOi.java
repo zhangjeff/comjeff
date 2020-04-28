@@ -1,4 +1,4 @@
-package gaode;
+package starbucks.gaode;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.http.HttpEntity;
@@ -22,9 +22,9 @@ public class GaoDPOi {
     public static void  generateData(String location, String keywords) throws Exception{
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String radius = "500";
-        String url = "https://restapi.amap.com/v3/place/around?key=eea76fff9ed991bb945380e7ba40dfe5&location="
+        String url = "https://restapi.amap.com/v3/place/around?key=6809f51ea24cd02694e4639bb85260ea&location="
                 +location+"&keywords="+
-                keywords+"&radius=" + radius +"&offset=200&page=1";
+                keywords+"&radius=" + radius +"&offset=1&page=1";
         HttpGet get = new HttpGet(url);
         CloseableHttpResponse response = httpClient.execute(get);
         int statusCode = response.getStatusLine().getStatusCode();
@@ -45,5 +45,35 @@ public class GaoDPOi {
 
         response.close();
         httpClient.close();
+    }
+
+    public static String  getCount(String location, String keywords) throws Exception{
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        String radius = "500";
+        String url = "https://restapi.amap.com/v3/place/around?key=6809f51ea24cd02694e4639bb85260ea&location="
+                +location+"&keywords="+
+                keywords+"&radius=" + radius +"&offset=1&page=1";
+        HttpGet get = new HttpGet(url);
+        CloseableHttpResponse response = httpClient.execute(get);
+        int statusCode = response.getStatusLine().getStatusCode();
+//        System.out.println(statusCode);
+        HttpEntity entity = response.getEntity();
+        String objString = EntityUtils.toString(entity, "utf-8");
+        ShopInfo shopInfo = JSON.parseObject(objString, ShopInfo.class);
+//        System.out.println(objString);
+//        关闭httpclient
+//        System.out.println(shopInfo);
+//        String line = "坐标(" + location +"),关键字:" + keywords +"， 数量---" + shopInfo.getCount();
+//        System.out.println(line);
+
+//        for (Poi poi : shopInfo.getPois()) {
+//            String linel = "坐标("+ location +"),数量："+shopInfo.getCount() + ",名称:" + poi.getName() + ",地址：" + poi.getAddress()
+//                    +",城市："+poi.getCityname();
+//            System.out.println(linel);
+//        }
+
+        response.close();
+        httpClient.close();
+        return shopInfo.getCount();
     }
 }

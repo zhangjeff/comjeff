@@ -1,4 +1,4 @@
-package gaode;
+package starbucks.gaode;
 
 public class Photo {
     private String url;
