@@ -2,6 +2,9 @@ package starbucks.gaode;
 
 import java.util.List;
 
+/**
+ * @author zhangying
+ */
 public class Poi {
 
     private String id;
