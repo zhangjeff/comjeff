@@ -17,8 +17,8 @@ public class StarBucks {
         ResultSet rs = null;
         FileOutputStream out = null;
         try {
-            ExecutorService exec = Executors.newFixedThreadPool(20);
-            out = new FileOutputStream("starbuck1.csv");
+            ExecutorService exec = Executors.newFixedThreadPool(5);
+//            out = new FileOutputStream("starbuck3.csv");
             List<String> starbuckList = new ArrayList<>();
             Connection conn= getConnect();
             st = conn.createStatement();
@@ -51,8 +51,13 @@ public class StarBucks {
                 }
             }
 
-
             BufferedWriter bw = new BufferedWriter(new FileWriter(new File("starbuck1.csv")));
+            String title = "storeName,address,province,city,longitude,latitude," +
+                    "外国餐厅,中餐厅,茶艺馆,甜品店,娱乐场所,咖啡厅,冷饮店,快餐厅,住宅区,楼宇,商场,培训机构,学校\r\n";
+            bw.write(title);
+            String title2 = "storeName,address,province,city,longitude,latitude," +
+                    "050200,050100,050600,050900,080304,050500,050700,050300,120300,120200,060100,141400,141205\r\n";
+            bw.write(title2);
             for (String bb : starbuckList) {
                 bw.write(bb);
             }
@@ -65,7 +70,6 @@ public class StarBucks {
             try {
                 rs.close();
                 st.close();
-                out.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -94,28 +98,46 @@ public class StarBucks {
                          String city,
                          String longitude,
                          String latitude){
-        ExecutorService exec = new ThreadPoolExecutor(5, 5,
+        ExecutorService exec = new ThreadPoolExecutor(13, 13,
                 60L, TimeUnit.SECONDS,
                 new SynchronousQueue<Runnable>());
         try {
             String location = longitude + "," + latitude;
             ArrayList<Future<String>> futures = new ArrayList<Future<String>>();
-            futures.add(exec.submit(new TaskWithResult(location,"美食")));
-            futures.add(exec.submit(new TaskWithResult(location,"购物中心")));
-            futures.add(exec.submit(new TaskWithResult(location,"办公楼")));
-            futures.add(exec.submit(new TaskWithResult(location,"教育培训类")));
-            futures.add(exec.submit(new TaskWithResult(location,"住宅类")));
+            futures.add(exec.submit(new TaskWithResult(location,"050200"))); //外国餐厅
+            futures.add(exec.submit(new TaskWithResult(location,"050100"))); //中餐厅
+            futures.add(exec.submit(new TaskWithResult(location,"050600"))); //茶艺馆
+            futures.add(exec.submit(new TaskWithResult(location,"050900"))); //甜品店
+            futures.add(exec.submit(new TaskWithResult(location,"080304")));//娱乐场所
+            futures.add(exec.submit(new TaskWithResult(location,"050500")));//咖啡厅
+            futures.add(exec.submit(new TaskWithResult(location,"050700")));//冷饮店
+            futures.add(exec.submit(new TaskWithResult(location,"050300")));//快餐厅
+
+            futures.add(exec.submit(new TaskWithResult(location,"120300")));//住宅区
+            futures.add(exec.submit(new TaskWithResult(location,"120200")));//楼宇
+            futures.add(exec.submit(new TaskWithResult(location,"060100")));//商场
+            futures.add(exec.submit(new TaskWithResult(location,"141400")));//培训机构
+            futures.add(exec.submit(new TaskWithResult(location,"141205")));//学校
+
             String count1 = futures.get(0).get();
             String count2 = futures.get(1).get();
             String count3 = futures.get(2).get();
             String count4 = futures.get(3).get();
             String count5 = futures.get(4).get();
+            String count6 = futures.get(5).get();
+            String count7 = futures.get(6).get();
+            String count8 = futures.get(7).get();
 
+            String count9 = futures.get(8).get();
+            String count10 = futures.get(9).get();
+            String count11 = futures.get(10).get();
+            String count12 = futures.get(11).get();
+            String count13 = futures.get(12).get();
             StringBuilder line = new StringBuilder();
             line.append(storeName);
-            line.append(",");
+            line.append(",\"");
             line.append(address);
-            line.append(",");
+            line.append("\",");
             line.append(province);
             line.append(",");
             line.append(city);
@@ -133,6 +155,22 @@ public class StarBucks {
             line.append(count4);
             line.append(",");
             line.append(count5);
+            line.append(",");
+            line.append(count6);
+            line.append(",");
+            line.append(count7);
+            line.append(",");
+            line.append(count8);
+            line.append(",");
+            line.append(count9);
+            line.append(",");
+            line.append(count10);
+            line.append(",");
+            line.append(count11);
+            line.append(",");
+            line.append(count12);
+            line.append(",");
+            line.append(count13);
             line.append("\r\n");
             System.out.println(line.toString());
             return line.toString();
@@ -151,17 +189,17 @@ public class StarBucks {
 
 class TaskWithResult implements Callable<String>{
     private String location;
-    private String keywords;
+    private String types;
 
 
-    public TaskWithResult(String location, String keywords){
+    public TaskWithResult(String location, String types){
         this.location = location;
-        this.keywords = keywords;
+        this.types = types;
     }
 
     @Override
     public String call() throws Exception {
-        return  GaoDPOi.getCount(location, keywords);
+        return  GaoDPOi.getCount(location, types);
     }
 }
 
