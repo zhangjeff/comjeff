@@ -26,17 +26,17 @@ class TicketWin implements Runnable {
     @Override
     public void run() {
         while (curNum < maxCount) {
-//            synchronized (object) {
+            synchronized (object) {
                 if (curNum < maxCount) {
                     System.out.println("当前窗口" + Thread.currentThread().getName() + "卖票" + (curNum++));
 //                    curNum++;
                 }
-//            }
-//            try {
-//                Thread.sleep(100);//休息一秒
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            }
+            try {
+                Thread.sleep(100);//休息一秒
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
