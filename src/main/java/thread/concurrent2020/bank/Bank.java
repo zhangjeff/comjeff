@@ -3,7 +3,7 @@ package thread.concurrent2020.bank;
 import java.util.Objects;
 
 public class Bank {
-    static double money = 1000;
+    static double money = 10000;
 
     private void counter(double money){
         Bank.money -= money;

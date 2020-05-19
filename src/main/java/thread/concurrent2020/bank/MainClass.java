@@ -10,7 +10,9 @@ public class MainClass {
         Bank bank = new Bank();
         PersonA personA = new PersonA(bank, "counter");
         PersonB personB = new PersonB(bank, "ATM");
+        PersonB personc = new PersonB(bank, "ATM");
         personA.start();
         personB.start();
+        personc.start();
     }
 }
