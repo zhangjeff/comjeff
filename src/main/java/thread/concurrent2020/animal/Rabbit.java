@@ -15,7 +15,7 @@ public class Rabbit extends Animal{
             }
         }
         try {
-            if ((2000 - length) % 20 == 0) {
+            if ((200 - length) % 20 == 0) {
                 Thread.sleep(1000);
             } else {
                 Thread.sleep(100);
