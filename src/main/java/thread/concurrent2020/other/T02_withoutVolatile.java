@@ -1,4 +1,4 @@
-package thread.concurrent2020;
+package thread.concurrent2020.other;
 
 import java.util.LinkedList;
 import java.util.List;

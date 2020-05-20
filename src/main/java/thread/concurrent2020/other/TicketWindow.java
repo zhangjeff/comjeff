@@ -1,4 +1,4 @@
-package thread.concurrent2020;
+package thread.concurrent2020.other;
 
 public class TicketWindow extends Thread {
     private final String name;

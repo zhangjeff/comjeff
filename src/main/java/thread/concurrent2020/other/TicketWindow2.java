@@ -1,4 +1,4 @@
-package thread.concurrent2020;
+package thread.concurrent2020.other;
 
 public class TicketWindow2 implements Runnable {
     private final static int MAX = 50;

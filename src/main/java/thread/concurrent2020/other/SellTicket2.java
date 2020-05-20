@@ -1,4 +1,4 @@
-package thread.concurrent2020;
+package thread.concurrent2020.other;
 
 /**
  * 1.三个售票窗口同时出售20张票

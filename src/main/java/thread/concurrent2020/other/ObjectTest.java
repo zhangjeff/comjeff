@@ -1,4 +1,4 @@
-package thread.concurrent2020;
+package thread.concurrent2020.other;
 
 import org.openjdk.jol.info.ClassLayout;
 
