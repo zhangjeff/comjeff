@@ -9,21 +9,21 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Printabc4 {
     static Thread t1 = null;
     static Thread t2 = null;
+    enum ReaytoRun {T1, T2}
+    static volatile ReaytoRun r = ReaytoRun.T1;
 
     public static void main(String[] args) {
 
         char[] aa = "ABCDEFG".toCharArray();
         char[] bb = "1234567".toCharArray();
-        BlockingQueue q1 = new LinkedBlockingDeque(1);
-        BlockingQueue q2 = new LinkedBlockingDeque(1);
+
 
         t1 = new Thread(() -> {
             try {
                 for (char a : aa) {
+                    while (r !=  ReaytoRun.T1) { }
                     System.out.print(a);
-                    q2.add(1);
-                    q1.take();
-
+                    r = ReaytoRun.T2;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -35,9 +35,9 @@ public class Printabc4 {
         t2 = new Thread(() -> {
             try {
                 for (char b : bb) {
-                    q2.take();
+                    while (r != ReaytoRun.T2) {}
                     System.out.print(b);
-                    q1.add(1);
+                    r = ReaytoRun.T1;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
