@@ -1,11 +1,5 @@
 package thread.concurrent2020.abc;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class Printabc4 {
     static Thread t1 = null;
     static Thread t2 = null;
