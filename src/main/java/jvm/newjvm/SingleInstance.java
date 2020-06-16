@@ -8,7 +8,6 @@ public class SingleInstance {
 
     private SingleInstance(){
     }
-
     public SingleInstance getInstance(){
         if (singleInstance == null) {
             synchronized (obj) {
