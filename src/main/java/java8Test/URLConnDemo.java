@@ -11,7 +11,7 @@ public class URLConnDemo
     {
         try
         {
-            URL url = new URL("http://www.sina.com.cn");
+            URL url = new URL("https://www.sina.com.cn/");
             URLConnection urlConnection = url.openConnection();
             HttpURLConnection connection = null;
             if(urlConnection instanceof HttpURLConnection)
