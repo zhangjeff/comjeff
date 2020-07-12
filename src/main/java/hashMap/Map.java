@@ -8,6 +8,11 @@ public interface Map<K, V> {
 
     int size();
 
-    interface EntryInterface<K, V> {
+    int hash(K k);
+
+    interface Entry<K, V> {
+        K getK();
+
+        V getV();
     }
 }
