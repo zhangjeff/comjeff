@@ -8,19 +8,26 @@ public class UserTest {
 
     public static void main(String[] args) {
         UserFeatureInfo userFeatureInfo = new UserFeatureInfo();
-        List<String> names = new ArrayList<>();
-        names.add("1111");
-        names.add("2222");
-        userFeatureInfo.setName(names);
+//        List<String> names = new ArrayList<>();
+//        names.add("1111");
+//        names.add("2222");
+//        userFeatureInfo.setName(names);
+//
+//        List<String> testName = userFeatureInfo.getName();
+//        testName.add("333");
+//        testName.add("4444");
+//        testName.remove("1111");
+////        System.out.println(userFeatureInfo.getName().size());
+//        for (String name: userFeatureInfo.getName()) {
+//            System.out.println(name);
+//        }
+        List<String> name1 = userFeatureInfo.getName();
+        name1.add("33333");
 
-        List<String> testName = userFeatureInfo.getName();
-        testName.add("333");
-        testName.add("4444");
-        testName.remove("1111");
-//        System.out.println(userFeatureInfo.getName().size());
         for (String name: userFeatureInfo.getName()) {
             System.out.println(name);
         }
+
 
     }
 }
